@@ -10,6 +10,7 @@ winCondition gameMatrix
     | topToBottomThdRow /= '_' = topToBottomThdRow:" wins!!"
     | diagonalLeftRow   /= '_' = diagonalLeftRow:" wins!!"
     | diagonalRightRow /= '_'  = diagonalRightRow:" wins!!"
+    | draw                     = "DRAW!!"
     | otherwise                = "----------------------------"
     where
         fstList = head gameMatrix
@@ -28,6 +29,7 @@ winCondition gameMatrix
         topToBottomThdRow = filledRowCheck topThdList
         diagonalLeftRow   = filledRowCheck diagonalLeftList
         diagonalRightRow  = filledRowCheck diagonalRightList
+        draw = notElem '_' fstList && notElem '_' sndList && notElem '_' thdList
 
 filledRowCheck :: [Char] -> Char
 filledRowCheck ls 
