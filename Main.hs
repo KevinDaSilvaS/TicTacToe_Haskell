@@ -27,14 +27,19 @@ gameFlow charPlayer gameMatrix = do
   if null nMatrix then
     (if '-' `elem` winCondition gameMatrix
     then gameFlow (changeCharPlayer charPlayer) gameMatrix
+    else if 'D' `elem` winCondition gameMatrix
+    then main
     else print (winCondition gameMatrix))
   else 
     (if '-' `elem` winCondition nMatrix
     then gameFlow (changeCharPlayer charPlayer) nMatrix
+    else if 'D' `elem` winCondition nMatrix
+    then main
     else print (winCondition nMatrix))
+
+  main
 
 main :: IO ()
 main = do
+  print "NEW GAME"
   gameFlow 'X' game
-
-
